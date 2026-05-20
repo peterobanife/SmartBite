@@ -17,7 +17,7 @@ The current V0 work defines the sensing architecture: sensor → ADC → MCU →
 
 ---
 
-> Status: V0 prototype planning and architecture definition. This repository is for research, prototyping, and engineering documentation, not a finished consumer or medical product.
+>  Status: V0 architecture defined • Prototype planning in progress • Public documentation active
 
 ![SmartBite system architecture](docs/architecture/diagrams/smartbite_system_architecture.png)
 
