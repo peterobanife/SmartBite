@@ -4,6 +4,19 @@
 
 The project begins with a compact bite-force sensing mouthpiece: embedded force sensing, signal conditioning, microcontroller processing, calibration, Bluetooth Low Energy communication, and ergonomic enclosure design. This first module creates the technical foundation for later SmartBite prototypes that combine sensing, user feedback, and controlled oral-care mechanisms.
 
+## Problem → Concept → Prototype
+
+**Problem**  
+Oral-health routines still rely heavily on manual brushing technique, user consistency, and limited feedback. For people with mobility limitations, inconsistent brushing habits, orthodontic needs, or interest in quantified health, there is room for smarter oral-care tools that can sense, guide, and eventually automate parts of the cleaning experience.
+
+**Concept**  
+SmartBite is an experimental smart oral-health platform. The first module focuses on bite-force sensing using embedded sensors, calibration, BLE communication, and ergonomic mouthpiece design. Longer term, the platform can support feedback, usage analytics, and controlled oral-care mechanisms.
+
+**Prototype**  
+The current V0 work defines the sensing architecture: sensor → ADC → MCU → calibration → BLE → mobile/receiver. The next build phase is focused on validating sensor placement, signal stability, calibration workflow, comfort, and safe packaging.
+
+---
+
 > Status: V0 prototype planning and architecture definition. This repository is for research, prototyping, and engineering documentation, not a finished consumer or medical product.
 
 ![SmartBite system architecture](docs/architecture/diagrams/smartbite_system_architecture.png)
