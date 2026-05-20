@@ -1,6 +1,6 @@
 # SmartBite
 
->  Status: V0 architecture defined • Prototype planning in progress • Public documentation active
+> Status: V0 architecture defined • Prototype planning in progress • Public documentation active
 
 **SmartBite is an experimental smart oral-health platform for sensing, feedback, and future automated cleaning prototypes.**
 
