@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartBite | Smart Oral-Health Prototype Platform</title>
+  <meta name="description" content="SmartBite is an experimental smart oral-health platform for bite-force sensing, embedded systems, BLE communication, calibration, and ergonomic mouthpiece design.">
+  <style>
+    :root {
+      --ink: #0b2545;
+      --muted: #5c6979;
+      --line: #d8e0ea;
+      --soft: #f5f8fb;
+      --panel: #ffffff;
+      --teal: #007180;
+      --blue: #174ea6;
+      --gold: #a36b00;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: #ffffff;
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.96);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    .hero {
+      padding: 56px 0 34px;
+      background: linear-gradient(180deg, #f7fbfd 0%, #ffffff 76%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 44px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 640px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    .button.primary {
+      color: #fff;
+      border-color: var(--teal);
+      background: var(--teal);
+    }
+
+    .architecture {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--panel);
+      box-shadow: 0 18px 45px rgba(11, 37, 69, 0.12);
+    }
+
+    .architecture img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    section {
+      padding: 42px 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .section-lead {
+      margin: 0 0 24px;
+      color: var(--muted);
+      max-width: 820px;
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      background: var(--panel);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .band {
+      background: var(--soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stage {
+      background: #fff;
+      border-left: 4px solid var(--teal);
+      border-radius: 6px;
+      padding: 18px;
+      border-top: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stage strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .stage p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .status {
+      border: 1px solid #f0cf7a;
+      background: #fff8e6;
+      border-radius: 8px;
+      padding: 18px;
+      color: #4f3600;
+    }
+
+    .link-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 18px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .link-list li {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+    }
+
+    footer {
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .grid,
+      .timeline,
+      .link-list {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <div class="brand">SmartBite</div>
+      <div class="nav-links">
+        <a href="#architecture">Architecture</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#docs">Docs</a>
+        <a href="https://github.com/peterobanife/SmartBite">GitHub</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Experimental oral-health engineering platform</p>
+          <h1>Smart sensing and feedback for the next generation of oral-care prototypes.</h1>
+          <p class="lead">SmartBite starts with a compact bite-force sensing mouthpiece that combines embedded sensors, signal processing, calibration, BLE communication, and ergonomic design.</p>
+          <p class="lead">The project is currently in V0 prototype planning: defining the sensing architecture, validating design constraints, and preparing for bench-first engineering tests.</p>
+          <div class="actions">
+            <a class="button primary" href="#docs">Explore Documentation</a>
+            <a class="button" href="architecture/system_architecture.html">System Architecture</a>
+          </div>
+        </div>
+        <figure class="architecture" id="architecture">
+          <img src="architecture/diagrams/smartbite_system_architecture.png" alt="SmartBite system architecture block diagram">
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>What SmartBite Is Building</h2>
+        <p class="section-lead">The early SmartBite system focuses on the embedded hardware and firmware foundation: sensing force at the mouthpiece, processing the signal, normalizing values through calibration, and sending useful data to a connected device.</p>
+        <div class="grid">
+          <article class="card">
+            <h3>Bite-Force Sensing</h3>
+            <p>Sensor selection, placement, pressure distribution, moisture isolation, ADC requirements, and signal filtering.</p>
+          </article>
+          <article class="card">
+            <h3>Embedded Processing</h3>
+            <p>MCU logic for sampling, feature extraction, calibration, power management, and user feedback control.</p>
+          </article>
+          <article class="card">
+            <h3>Ergonomic Integration</h3>
+            <p>Mouthpiece comfort, safe material choices, smooth enclosure geometry, BLE antenna placement, and cleanability.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="roadmap">
+      <div class="wrap">
+        <h2>Prototype Roadmap</h2>
+        <p class="section-lead">SmartBite is being developed in staged prototypes so each build answers a specific engineering question before the design becomes more compact and consumer-ready.</p>
+        <div class="timeline">
+          <div class="stage">
+            <strong>V0: Sensing Proof</strong>
+            <p>Single sensor, basic mouthpiece, ADC/MCU pipeline, calibration workflow, and BLE data transmission.</p>
+          </div>
+          <div class="stage">
+            <strong>V1: Improved Prototype</strong>
+            <p>Better ergonomics, improved sensor accuracy, stronger enclosure design, battery optimization, and app integration.</p>
+          </div>
+          <div class="stage">
+            <strong>Future Platform</strong>
+            <p>Multi-sensor designs, richer analytics, refined industrial design, and expanded oral-health prototype capabilities.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="docs">
+      <div class="wrap">
+        <h2>Documentation</h2>
+        <p class="section-lead">The repository is organized as an engineering notebook for the product concept, hardware architecture, firmware planning, and prototype decisions.</p>
+        <ul class="link-list">
+          <li><a href="architecture/system_architecture.html">System architecture overview</a></li>
+          <li><a href="architecture/hw_fw_interaction.html">Hardware and firmware interaction</a></li>
+          <li><a href="sensing/bite_force_sensing.html">Bite-force sensing concept</a></li>
+          <li><a href="ergonomics/ergonomic_design.html">Ergonomic design principles</a></li>
+          <li><a href="communication/ble_overview.html">BLE communication overview</a></li>
+          <li><a href="calibration/calibration_workflow.html">Calibration workflow</a></li>
+          <li><a href="roadmap/roadmap.html">Project roadmap</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="status">
+          <strong>Prototype status:</strong> SmartBite is in V0 planning and architecture definition. It is a research and engineering prototype, not a finished consumer or medical product. Any physical testing should start on the bench, use appropriate materials and isolation, and avoid clinical claims.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">SmartBite | Experimental smart oral-health prototype platform | <a href="https://github.com/peterobanife/SmartBite">View on GitHub</a></div>
+  </footer>
+</body>
+</html>
