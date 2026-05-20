@@ -3,6 +3,8 @@
 This document provides a high‑level overview of the SmartBite system, describing how all major subsystems interact. It serves as the foundation for firmware, hardware, and ergonomic design decisions.
 
 ---
+![SmartBite System Architecture](diagrams/smartbite_system_architecture.png)
+---
 
 ## 1. System Components.
 
